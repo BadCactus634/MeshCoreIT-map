@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  web:
+    image: meshcore-it-web
+    ports:
+      - "8085:8080"
+    volumes:
+      - web_data:/app
+      - shared_data:/app/shared
+    restart: unless-stopped
+
+  bot:
+    image: meshcore-it-bot
+    volumes:
+      - bot_data:/app
+      - shared_data:/app/shared
+    environment:
+      - BOT_TOKEN=xxxxxxxxxxx
+    depends_on:
+      - web
+    restart: unless-stopped
+
+volumes:
+  web_data:
+  bot_data:
+  shared_data:

@@ -340,22 +340,28 @@ async def admin_stats(update: Update, context: ContextTypes.DEFAULT_TYPE):
         users[user_id] = users.get(user_id, 0) + 1
     
     top_users = sorted(users.items(), key=lambda x: x[1], reverse=True)[:5]
-    markers_with_links = sum(1 for m in markers if m['link'])
+    markers_with_links = sum(1 for m in markers if m.get('link'))
+
+    # Calcola percentuale solo se ci sono marker
+    link_percentage = f"{markers_with_links / total_markers:.1%}" if total_markers else "0%"
     
     # Costruisci il messaggio
     stats_message = (
         "📊 <b>Statistiche Admin</b>\n\n"
         f"📍 <b>Marker totali:</b> {total_markers}\n"
         f"👥 <b>Utenti unici:</b> {len(users)}\n"
-        f"🔗 <b>Marker con link:</b> {markers_with_links} ({markers_with_links/total_markers:.1%})\n\n"
+        f"🔗 <b>Marker con link:</b> {markers_with_links} ({link_percentage})\n\n"
         "🏆 <b>Top contributor:</b>\n"
     )
     
-    for i, (user_id, count) in enumerate(top_users, 1):
-        user_info = next((m for m in markers if m['ID'] == user_id), None)
-        username = f"@{user_info['user']}" if user_info and user_info.get('user') else f"Utente #{user_id}"
-        stats_message += f"{i}. {username}: {count} marker\n"
-    
+    if top_users:
+        for i, (user_id, count) in enumerate(top_users, 1):
+            user_info = next((m for m in markers if m['ID'] == user_id), None)
+            username = f"@{user_info['user']}" if user_info and user_info.get('user') else f"Utente #{user_id}"
+            stats_message += f"{i}. {username}: {count} marker\n"
+    else:
+        stats_message += "Nessun marker registrato.\n"
+
     stats_message += (
         f"\n⭐ <b>Utenti speciali:</b> {sum(1 for uid in users if int(uid) in SPECIAL_USERS)}\n"
         f"🔢 <b>Max marker per utente:</b> {MAX_MARKERS_PER_USER} (normali), {MAX_MARKERS_FOR_SPECIAL_USERS} (speciali)"
@@ -368,6 +374,7 @@ async def admin_stats(update: Update, context: ContextTypes.DEFAULT_TYPE):
             [InlineKeyboardButton("🔙 Torna al menu", callback_data="back_to_menu")]
         ])
     )
+
 
 async def admin_export(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Esporta tutti i marker in un file CSV."""
@@ -383,8 +390,7 @@ async def admin_export(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await context.bot.send_document(
                 chat_id=query.from_user.id,
                 document=f,
-                filename='markers_export.csv',
-                caption='📤 Esportazione completa dei marker'
+                filename='markers_export.csv'
             )
         await query.edit_message_text(
             "✅ File esportato con successo!",
