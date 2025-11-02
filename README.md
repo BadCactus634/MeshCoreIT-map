@@ -52,7 +52,7 @@ Mappa nazionale dei nodi **MeshCore** in Italia. Questo progetto permette di vis
 ### Con Docker Compose
 
 ```bash
-git clone https://github.com/<tuo-username>/MeshCoreIT-map.git
+git clone https://github.com/BadCactus634/MeshCoreIT-map.git
 cd MeshCoreIT-map
 docker compose build
 docker compose up -d
