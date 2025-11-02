@@ -35,7 +35,7 @@ Mappa nazionale dei nodi **MeshCore** in Italia. Questo progetto permette di vis
 ---
 
 ## Struttura del progetto
-
+```bash
 ├── Dockerfile.web # Dockerfile per il servizio web
 ├── Dockerfile.bot # Dockerfile per il bot Telegram
 ├── docker-compose.yml # Compose file per sviluppo locale / deploy
@@ -43,7 +43,7 @@ Mappa nazionale dei nodi **MeshCore** in Italia. Questo progetto permette di vis
 │ └── dati.csv # File CSV con i nodi
 ├── web/ # Codice frontend
 └── bot/ # Codice bot Telegram
-
+```
 
 ---
 
