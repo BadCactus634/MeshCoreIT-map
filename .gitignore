@@ -1,0 +1,11 @@
+# Evita file temporanei, log e build
+*.log
+*.tmp
+__pycache__/
+*.pyc
+.env
+node_modules/
+.DS_Store
+.idea/
+.vscode/
+README.md
