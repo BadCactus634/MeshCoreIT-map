@@ -1,4 +1,4 @@
-# MeshCoreIT-map
+# 🌍 Mappa Interattiva Nodi MeshCore Italiani
 
 [![Licenza](https://img.shields.io/badge/Licenza-MIT-green.svg)](LICENSE)
 [![Versione](https://img.shields.io/badge/Versione-3.1.0-blue.svg)](https://github.com/BadCactus634/LoRaBS-map)
@@ -79,5 +79,6 @@ Admin: definire gli ID degli admin in ADMIN_IDS.
 Utenti speciali: definire gli ID in SPECIAL_USERS.
 
 File CSV nodi: /shared/dati.csv contiene tutti i nodi registrati.
+
 
 
