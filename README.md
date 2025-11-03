@@ -1,24 +1,49 @@
 # MeshCoreIT-map
 
-Mappa nazionale dei nodi **MeshCore** in Italia. Questo progetto permette di visualizzare su mappa tutti i nodi registrati, filtrare per frequenza, cercare singoli nodi e accedere a statistiche amministrative.
+[![Licenza](https://img.shields.io/badge/Licenza-MIT-green.svg)](LICENSE)
+[![Versione](https://img.shields.io/badge/Versione-3.1.0-blue.svg)](https://github.com/BadCactus634/LoRaBS-map)
 
----
+Mappa nazionale dei nodi **MeshCore** in Italia. Questo progetto permette di visualizzare su mappa tutti i nodi registrati, filtrare per frequenza, cercare singoli nodi e accedere a statistiche amministrative.
 
 ## Funzionalità principali
 
-- Visualizzazione dei nodi su mappa interattiva con clustering.
-- Filtri per frequenza e altri parametri dei nodi.
-- Ricerca rapida dei nodi per nome.
+- Visualizzazione dei nodi su mappa interattiva con clustering
+- Filtri per frequenza e altri parametri dei nodi
+- Ricerca rapida dei nodi per nome
 - Statistiche per gli admin:
   - Numero totale di marker
   - Utenti unici
   - Marker con link
   - Top contributor
   - Utenti speciali
-- Aggiornamento automatico dei dati.
-- Popup dettagliati per ogni nodo con link e informazioni utente.
+- Popup dettagliati per ogni nodo con link e informazioni utente
 
----
+
+## Struttura del progetto
+```bash
+meshcore-it-map/
+├── shared/
+    └── dati.csv # File CSV con i nodi condiviso tra bot e web
+├── web/ # Codice frontend
+├── bot/
+├── Dockerfile.web
+├── Dockerfile.bot
+└── docker-compose.yml
+
+```
+
+## Integrazione Bot Telegram
+Il codice include un bot Telegram per inserire i nodi nella mappa con funzionalità di aggiunta, modifica e rimozione marker. Ogni utente normale può inserire al massimo 6 marker.
+
+### Funzionalità principali
+
+- ✅ Aggiungi nuovi marker con coordinate, nome, descrizione e link
+- ✏️ Rinomina marker esistenti
+- 🗑️ Elimina marker
+- 📍 Visualizza la lista dei tuoi marker
+- 📊 Statistiche e comandi per admin
+- 🔒 Controllo degli accessi e limiti per utente
+
 
 ## Tecnologie utilizzate
 
@@ -31,19 +56,6 @@ Mappa nazionale dei nodi **MeshCore** in Italia. Questo progetto permette di vis
   - [python-telegram-bot](https://github.com/python-telegram-bot/python-telegram-bot) per il bot Telegram
 - **Docker**
   - Contenitori separati per `web` e `bot` con volumi condivisi
-
----
-
-## Struttura del progetto
-```bash
-├── Dockerfile.web # Dockerfile per il servizio web
-├── Dockerfile.bot # Dockerfile per il bot Telegram
-├── docker-compose.yml # Compose file per sviluppo locale / deploy
-├── shared/ # Dati condivisi tra bot e web
-│ └── dati.csv # File CSV con i nodi
-├── web/ # Codice frontend
-└── bot/ # Codice bot Telegram
-```
 
 ---
 
@@ -67,4 +79,5 @@ Admin: definire gli ID degli admin in ADMIN_IDS.
 Utenti speciali: definire gli ID in SPECIAL_USERS.
 
 File CSV nodi: /shared/dati.csv contiene tutti i nodi registrati.
+
 
