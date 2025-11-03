@@ -72,7 +72,6 @@ docker compose up -d
 ```
 
 ## Configurazione
-
 Bot Telegram: impostare BOT_TOKEN come variabile d'ambiente.
 
 Admin: definire gli ID degli admin in ADMIN_IDS.
@@ -80,6 +79,20 @@ Admin: definire gli ID degli admin in ADMIN_IDS.
 Utenti speciali: definire gli ID in SPECIAL_USERS.
 
 File CSV nodi: /shared/dati.csv contiene tutti i nodi registrati.
+
+## To-Do
+- [x] [BOT] Invio annunci a tutti gli utenti
+- [x] [BOT] Gestione DB da Telegram per admin
+- [x] [BOT] Notifiche quando nuovi nodi vengono aggiunti nella tua area
+- [ ] [BOT] Invio notifica per conferma nodi inattivi ed eventuale rimozione
+- [ ] [BOT] Loggare le azioni del bot in un file di log
+- [ ] Banner "Nodi aggiunti oggi"
+- [x] Finestra di log (aggiunta, rimozione, rinomino marker)
+- [ ] Implementare inserimento layer marker da API meshcore
+- [ ] Creazione API per integrazione con MapForHam
+- [ ] Modal Info Avanzate (UI): icone custom e colori differenti per repeater meshcore
+- [ ] Layer di copertura nodo stimata
+- [x] Dark Mode
 
 
 
